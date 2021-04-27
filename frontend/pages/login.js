@@ -11,6 +11,7 @@ export default function Login({ token }) {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [status, setStatus] = useState('')
+    const [ischeck, setIscheck] = useState('')
 
     const login = async (req, res) => {
         try {
@@ -70,9 +71,19 @@ export default function Login({ token }) {
                 <br/>
                 <div>
                     Status:  {status}
+                    check: {ischeck}
                 </div>
                 <br />
                 {loginForm()}
+
+                <div>
+                    <input type="checkbox"
+                        name="IsRememberMe"
+                        onChange={ (e) => setIscheck(e.target.value)}
+                    />Remember me!
+                    <br /><br />
+                </div>
+                
                 <div>
                     <button onClick={login}>Login</button>
                 </div>

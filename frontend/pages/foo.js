@@ -7,15 +7,15 @@ import axios from 'axios'
 import withAuth from '../components/withAuth'
 import config from '../config/config'
 
-const foo = ({ token }) => {
+const foo1 = ({ token }) => {
 
     const [user, setUser] = useState({})
 
     useEffect(() => {
-        Foo_use()
+        fooUser()
     }, [])
 
-    const Foo_use = async () => {
+    const fooUser = async () => {
         try {
             // console.log('token: ', token)
             const users = await axios.get(`${config.URL}/foo`, {
@@ -33,11 +33,11 @@ const foo = ({ token }) => {
     return (
         <Layout>
             <Head>
-                <title>Foo</title>
+                <title>User foo</title>
             </Head>
             <div className={styles.container}>
                 <Navbar />
-                <h1>Foo</h1>
+                <h1>foo</h1>
                 {/* <div>
                     <b>Token:</b> {token.substring(0, 15)}... <br /><br />
                     This route is protected by token, user is required to login first.
@@ -51,7 +51,7 @@ const foo = ({ token }) => {
     )
 }
 
-export default withAuth(foo)
+export default withAuth(foo1)
 
 export function getServerSideProps({ req, res }) {
     return { props: { token: req.cookies.token || "" } };
